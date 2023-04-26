@@ -1,29 +1,28 @@
-import react from '@vitejs/plugin-react'
-import path from 'node:path'
-import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
+// vite.config.js
+import { resolve } from "path";
+import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [
     react(),
     dts({
-        insertTypesEntry: true,
+      insertTypesEntry: true,
     }),
   ],
   build: {
-    sourcemap: true,
     lib: {
-      entry: path.resolve(__dirname, 'src/lib/index.ts'),
-      name: 'AboutMFE',
-      formats: ['es', 'umd'],
-      fileName: (format) => `index.${format}.js`,
+      entry: resolve(__dirname, "src/index.tsx"),
+      name: "PedroMarketplaceAboutMFE",
+      fileName: "pedro-marketplace",
+      formats: ["es", "cjs", "umd", "iife"],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'styled-components'],
+      external: ["react"],
       output: {
         globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
+          react: "react",
         },
       },
     },

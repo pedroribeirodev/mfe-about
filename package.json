@@ -1,8 +1,20 @@
 {
-  "name": "@pedro-markeplace/about",
+  "name": "@pedro-marketplace/about",
   "private": false,
-  "version": "0.0.0",
+  "version": "6.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/pedro-marketplace.umd.cjs",
+  "module": "./dist/pedro-marketplace.js",
+  "types": "./dist/pedro-marketplace.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/pedro-marketplace.js",
+      "require": "./dist/pedro-marketplace.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -13,6 +25,7 @@
     "release": "npm run build && changeset publish"
   },
   "dependencies": {
+    "@pedro-marketplace/react": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -30,17 +43,5 @@
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "vite-plugin-dts": "^2.3.0"
-  },
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js"
-    }
   }
 }
